@@ -44,10 +44,10 @@
                             <td>
                                 <div class="row">
                                     <div class="col s6">
-                                        <a href="#edit" class="waves-effect waves-light btn orange"><i class="material-icons">edit</i></a>
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="waves-effect waves-light btn orange"><i class="material-icons">edit</i></a>
                                     </div>
                                     <div class="col s6">
-                                        <a href="#delete" class="waves-effect waves-light btn red"><i class="material-icons">delete_forever</i></a>
+                                        <a href="{{ route('admin.categories.delete', $category->id) }}" class="waves-effect waves-light btn red"><i class="material-icons">delete_forever</i></a>
                                     </div>
                                 </div>
                             </td>

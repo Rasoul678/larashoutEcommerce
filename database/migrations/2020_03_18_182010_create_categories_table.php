@@ -16,7 +16,7 @@
             Schema::create('categories', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
-                $table->string('slug')->default('car');
+                $table->string('slug')->default('slug');
                 $table->text('description')->nullable();
                 $table->unsignedInteger('parent_id')->default(1)->nullable();
                 $table->boolean('featured')->default(0);
