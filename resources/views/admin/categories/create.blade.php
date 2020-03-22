@@ -2,67 +2,50 @@
 @section('title') Create Category @endsection
 @section('content')
 
-    <div class="container section">
-        <div>
-            <h3>Add New Category</h3>
+    <div class="container">
+        <div class="mt-4">
+            <h2>Add New Category</h2>
         </div>
-        <div class="row">
-            <form class="col s12"  action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="text" id="name" name="name" autofocus value="{{ old('name') }}">
-                        <label for="name">Name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="description" class="materialize-textarea">{{ old('description') }}</textarea>
-                        <label for="description">Description</label>
-                    </div>
-                </div>
+        <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+            </div>
 
-                <div class="row">
-                    <label>Parent Category</label>
-                    <div class="input-field col s12">
-                        <select name="parent_id" class="browser-default">
-                            <option value="" disabled selected>Select a parent category</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="category">Parent Category</label>
+                <select class="form-control" name="parent_id" id="category">
+                    <option value="" disabled selected>Select a parent category</option>
+                    @foreach($categories as $key => $category)
+                        <option value="{{ $key }}"> {{ $category }} </option>
+                    @endforeach
+                </select>
+            </div>
 
-                <p>
-                    <label>
-                        <input type="checkbox" class="filled-in" checked="checked"  id="featured" name="featured"/>
-                        <span>Featured Category</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" class="filled-in" checked="checked"  id="menu" name="menu"/>
-                        <span>Show in Menu</span>
-                    </label>
-                </p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked="checked" value="" id="featured" name="featured">
+                <label class="form-check-label" for="featured">
+                    Featured Category
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked="checked" value="" id="menu" name="menu">
+                <label class="form-check-label" for="menu">
+                    Show in Menu
+                </label>
+            </div>
 
-                <div class="input-field col s12">
-                    <button class="waves-effect waves-light btn" type="submit">Save Category</button>
-                    <a class="waves-effect waves-light btn red" href="{{ route('admin.categories.index') }}">Cancel</a>
-                </div>
-
-            </form>
-        </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Save Category</button>
+                <a class="btn btn-danger" role="button" href="{{ route('admin.categories.index') }}">Cancel</a>
+            </div>
+        </form>
     </div>
 
-
-
-
-{{--    <div class="form-group">--}}
-{{--        <label class="control-label">Category Image</label>--}}
-{{--        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"/>--}}
-{{--        @error('image') {{ $message }} @enderror--}}
-{{--    </div>--}}
 
 @endsection

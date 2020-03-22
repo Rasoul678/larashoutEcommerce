@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -20,9 +21,13 @@ class CategoryController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(string $order = 'id', string $sort = 'asc', array $columns = ['*'])
+    public function create()
     {
-        $categories = Category::all($columns, $order, $sort);
+//        $categories = Category::all($columns, $order, $sort);
+        $categories = Category::orderByRaw('-name ASC')
+            ->get()
+            ->nest()
+            ->listsFlattened('name');
 
         return view('admin.categories.create', compact('categories'));
     }
@@ -58,10 +63,14 @@ class CategoryController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id, string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    public function edit($id)
     {
         $targetCategory = Category::findOrFail($id);
-        $categories = Category::all($columns, $order, $sort);
+//        $categories = Category::all($columns, $order, $sort);
+        $categories = Category::orderByRaw('-name ASC')
+            ->get()
+            ->nest()
+            ->listsFlattened('name');
 
         return view('admin.categories.edit', compact('categories', 'targetCategory'));
     }

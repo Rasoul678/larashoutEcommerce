@@ -4,35 +4,33 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreProductFormRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 
 class ProductController extends Controller
 {
+
     /**
-     * @param string $order
-     * @param string $sort
-     * @param array $columns
+     *  Display a listing of the products.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    public function index()
     {
-        $products = Product::all($columns, $order, $sort);;
+        $products = Product::all();
 
         return view('admin.products.index', compact('products'));
     }
 
 
     /**
-     * @param string $order
-     * @param string $sort
-     * @param array $columns
+     * Show a form to create new products
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(string $order = 'id', string $sort = 'asc', array $columns = ['*'])
+    public function create()
     {
-        $categories = Category::all($columns, $order, $sort);
+        $categories = Category::all();
 
         return view('admin.products.create', compact('categories'));
     }

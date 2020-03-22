@@ -9,5 +9,8 @@
         <li>
             <a class="{{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}"><i class="material-icons">local_mall</i> Products</a>
         </li>
+        <li>
+            <a class="{{ Route::currentRouteName() == 'admin.orders.index' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}"><i class="material-icons">shopping_cart</i> Orders</a>
+        </li>
     </ul>
 </aside>

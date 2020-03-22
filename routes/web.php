@@ -1,6 +1,7 @@
 <?php
 
     use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Auth;
 
     /*
     |--------------------------------------------------------------------------
@@ -14,7 +15,14 @@
     */
 
     require 'admin.php';
+    Auth::routes();
 
     Route ::get('/', function () {
         return view('welcome');
-    });
+    })->name('home');
+
+    Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
+
+    Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
+
+    Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
