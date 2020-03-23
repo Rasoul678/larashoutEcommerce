@@ -2,47 +2,47 @@
 @section('title') Categories @endsection
 @section('content')
     <div class="container mt-5">
-        <div>
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary" role="button">Add Category</a>
+        <h1 class="mt-5 rounded-pill bg-dark text-center p-3 text-light"> Categories</h1>
+        <div class="mt-5">
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-lg" role="button">Add Category</a>
         </div>
         <div class="mt-5">
-            <h2>Categories</h2>
             <div>
-                <table class="table table-bordered">
-                    <thead>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
                     <tr>
-                        <th> # </th>
-                        <th> Name </th>
-                        <th> Slug </th>
-                        <th class="text-center"> Parent </th>
-                        <th class="text-center"> Featured </th>
-                        <th class="text-center"> Menu </th>
-                        <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
+                        <th scope="col"> # </th>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Slug </th>
+                        <th scope="col"> Parent </th>
+                        <th scope="col"> Featured </th>
+                        <th scope="col"> Menu </th>
+                        <th ></th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($categories as $category)
                         @if ($category->id != 1)
                             <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->slug }}</td>
-                                <td>{{ $category->parent->name }}</td>
-                                <td class="text-center">
+                                <td scope="row"><h4>{{ $category->id }}</h4></td>
+                                <td scope="row"><h5>{{ $category->name }}</h5></td>
+                                <td scope="row"><h5>{{ $category->slug }}</h5></td>
+                                <td scope="row"><h5>{{ $category->parent->name }}</h5></td>
+                                <td scope="row">
                                     @if ($category->featured == 1)
-                                        <span class="badge badge-success">Yes</span>
+                                        <h4><span class="badge badge-success text-dark">Yes</span></h4>
                                     @else
-                                        <span class="badge badge-danger">No</span>
+                                        <h4><span class="badge badge-danger">No</span></h4>
                                     @endif
                                 </td>
-                                <td class="text-center">
+                                <td scope="row">
                                     @if ($category->menu == 1)
-                                        <span class="badge badge-success">Yes</span>
+                                        <h4><span class="badge badge-success text-dark">Yes</span></h4>
                                     @else
-                                        <span class="badge badge-danger">No</span>
+                                        <h4><span class="badge badge-danger">No</span></h4>
                                     @endif
                                 </td>
-                                <td>
+                                <td scope="row">
                                     <div class="row">
                                         <div class="col s6">
                                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning" role="button"><i class="material-icons">edit</i></a>

@@ -2,30 +2,37 @@
 @section('title') Create Category @endsection
 @section('content')
 
-    <div class="container">
+    <div class="container mt-5" style="width: 650px">
         <div class="mt-4">
             <h2>Add New Category</h2>
         </div>
         <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            <div class="form-row">
+                <div class="col md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                    </div>
+                </div>
+                <div class="col md-6">
+                    <div class="form-group">
+                        <label for="category">Parent Category</label>
+                        <select class="form-control" name="parent_id" id="category">
+                            <option value="" disabled selected>Select a parent category</option>
+                            @foreach($categories as $key => $category)
+                                <option value="{{ $key }}"> {{ $category }} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
             </div>
 
-            <div class="form-group">
-                <label for="category">Parent Category</label>
-                <select class="form-control" name="parent_id" id="category">
-                    <option value="" disabled selected>Select a parent category</option>
-                    @foreach($categories as $key => $category)
-                        <option value="{{ $key }}"> {{ $category }} </option>
-                    @endforeach
-                </select>
-            </div>
 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" checked="checked" value="" id="featured" name="featured">

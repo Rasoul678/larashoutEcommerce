@@ -1,13 +1,11 @@
 @extends('admin.app')
 @section('title') Edit Product @endsection
-=@section('content')
+@section('content')
 
-    <div class="container">
-        <div class="mt-4">
+    <div class="container mt-5" style="width: 650px">
+        <div class="mt-4 mb-3">
             <h2>Edit Product</h2>
         </div>
-    </div>
-    <div class="container mt-5">
         <form action="{{ route('admin.products.update') }}" method="POST">
             @csrf
             <h4>Product Information</h4>

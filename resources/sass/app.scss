@@ -10,4 +10,11 @@
 body{
     background-color: #eee;
 }
+.material-icons.md-55 { font-size: 55px; }
 
+.material-icons.orange600 { color: #FB8C00; }
+
+li.active a{
+    color: orange !important;
+    border-color: rgb(255,165,0) !important;
+}

@@ -2,12 +2,10 @@
 @section('title') Create Product @endsection
 @section('content')
 
-    <div class="container">
-        <div class="mt-4">
+    <div class="container mt-5" style="width: 650px">
+        <div class="mt-4 mb-3">
             <h2>Create Product</h2>
         </div>
-    </div>
-    <div class="container mt-5">
         <form action="{{ route('admin.products.store') }}" method="POST">
             @csrf
             <h4>Product Information</h4>

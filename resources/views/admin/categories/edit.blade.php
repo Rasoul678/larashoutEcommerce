@@ -2,16 +2,36 @@
 @section('title') Edit Category @endsection
 @section('content')
 
-    <div class="container">
+    <div class="container mt-5" style="width: 650px">
         <div>
             <h3 class="mt-4">Edit Category</h3>
         </div>
 
         <form action="{{ route('admin.categories.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $targetCategory->name) }}">
+            <div class="form-row">
+                <div class="col md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $targetCategory->name) }}">
+                        <input type="hidden" name="id" value="{{ $targetCategory->id }}">
+                    </div>
+                </div>
+                <div class="col md-6">
+                    <div class="form-group">
+                        <label for="category">Parent Category</label>
+                        <select class="form-control" name="parent_id" id="category">
+                            <option value="" disabled selected>Select a parent category</option>
+                            @foreach($categories as $key => $category)
+                                @if ($targetCategory->parent_id == $key)
+                                    <option value="{{ $key }}" selected> {{ $category }} </option>
+                                @else
+                                    <option value="{{ $key }}"> {{ $category }} </option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -19,19 +39,6 @@
                 <textarea class="form-control" id="description" name="description">{{ old('description', $targetCategory->description) }}</textarea>
             </div>
 
-            <div class="form-group">
-                <label for="category">Parent Category</label>
-                <select class="form-control" name="parent_id" id="category">
-                    <option value="" disabled selected>Select a parent category</option>
-                    @foreach($categories as $key => $category)
-                        @if ($targetCategory->parent_id == $key)
-                            <option value="{{ $key }}" selected> {{ $category }} </option>
-                        @else
-                            <option value="{{ $key }}"> {{ $category }} </option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" {{ $targetCategory->featured == 1 ? 'checked' : '' }} value="" id="featured" name="featured">
