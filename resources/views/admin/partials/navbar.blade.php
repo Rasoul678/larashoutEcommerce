@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" href="{{route('home')}}"><i class="material-icons md-55 orange600">store</i></h2></a>
+    <a class="navbar-brand" href="{{route('home')}}"><i class="material-icons md-55 orange600">store</i></a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}">

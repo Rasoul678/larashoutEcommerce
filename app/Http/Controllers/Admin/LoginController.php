@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-//    use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect admins after login.
@@ -59,7 +59,7 @@ class LoginController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)
     {

@@ -25,30 +25,27 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h1>Paraye Store</h1>
+                    <h1>Store</h1>
                 </a>
-{{--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-{{--                    <span class="navbar-toggler-icon"></span>--}}
-{{--                </button>--}}
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav category">
                         @foreach($categories as $cat)
                             @foreach($cat->items as $category)
                                 @if ($category->items->count() > 0)
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="{{ route('category.show', $category->slug) }}" id="{{ $category->slug }}"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><small><strong>{{ $category->name }}</strong></small></a>
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $category->name }}</a>
                                         <div class="dropdown-menu" aria-labelledby="{{ $category->slug }}">
                                             @foreach($category->items as $item)
-                                                <a class="dropdown-item" href="{{ route('category.show', $item->slug) }}"><small><strong>{{ $item->name }}</strong></small></a>
+                                                <a class="dropdown-item" href="{{ route('category.show', $item->slug) }}">{{ $item->name }}</a>
                                             @endforeach
                                         </div>
                                     </li>
                                 @else
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('category.show', $category->slug) }}"><small><strong>{{ $category->name }}</strong></small></a>
+                                        <a class="nav-link" href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
                                     </li>
                                 @endif
                             @endforeach
@@ -107,20 +104,22 @@
             @yield('content')
         </main>
     </div>
-    <footer class="bg-dark text-light">
+    <footer class="page-footer font-small bg-dark text-light">
         <div class="container">
             <div class="row">
                 <div class="col m-4">
                     <h4>Customer Service</h4>
                 </div>
                 <div class="col m-4">
-                    <h4>My Account</h4>
-                </div>
-                <div class="col m-4">
                     <h4>About</h4>
+                    <h5> This is an online store, you can find us here in case you want something exotic</h5>
                 </div>
                 <div class="col m-4">
-                    <h4>Contacts</h4>
+                    <h3>Contacts</h3>
+                    <h5>Address : No. 5, Sarv Street, Valiasr Ave., Tehran, IRAN</h5>
+                    <h5>Postal Code : 1968956193</h5>
+                    <h5>Tel : +98 21 88662300</h5>
+                    <h5>E-Mail : Info@paraye.com</h5>
                 </div>
             </div>
         </div>

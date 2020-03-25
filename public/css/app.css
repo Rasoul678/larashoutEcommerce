@@ -10899,3 +10899,11 @@ li.active a {
   border-color: orange !important;
 }
 
+.category a {
+  font-size: 22px;
+}
+
+.category a:hover {
+  color: orange !important;
+}
+

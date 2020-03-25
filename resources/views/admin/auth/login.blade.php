@@ -9,9 +9,9 @@
         <title>Login - {{ config('app.name') }}</title>
     </head>
     <body>
-        <div class="container section">
+        <div class="container section" style="width: 500px">
             <div>
-                <h1>Sign In</h1>
+                <h1 class="center">Sign In</h1>
             </div>
                 <div class="row">
                     <form class="col s12"  action="{{ route('admin.login.post') }}" method="POST">
